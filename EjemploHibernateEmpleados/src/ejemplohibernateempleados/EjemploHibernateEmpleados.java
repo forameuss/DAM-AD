@@ -25,9 +25,9 @@ public class EjemploHibernateEmpleados {
                 System.out.println("Insertando registro");
                 Transaction tx = session.beginTransaction();
                 //Creando un Objeto
-//                Empleado employe = new Empleado();
-//                employe.setNombre("Juanito");
-//                employe.setApellido("De la Vega");
+                //Empleado employe = new Empleado();
+                //employe.setNombre("Juanito");
+                //employe.setApellido("De la Vega");
                 Empleado fulanito = new Empleado();
                 fulanito.setApellido("Perico");
                 fulanito.setNombre("Tilla");
