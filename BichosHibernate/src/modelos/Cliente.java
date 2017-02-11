@@ -2,29 +2,22 @@ package modelos;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name="dbo.BI_Clientes")
 public class Cliente {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo;
-	
 	@Column(name="Telefono")
 	private String telefono;
-	
 	@Column(name="Direccion")
 	private String direccion;
-
 	@Column(name="NumeroCuenta")
 	private String numeroCuenta;
-	
 	@Column(name="Nombre")
 	private String nombre;
-	
 	@OneToMany(mappedBy="cliente",cascade= CascadeType.ALL)
 	private Set<Mascota> mascotas=new HashSet();
 
@@ -85,5 +78,10 @@ public class Cliente {
 
 	public void setMascotas(Set<Mascota> mascotas) {
 		this.mascotas = mascotas;
+	}
+
+	@Override
+	public String toString(){
+		return getCodigo()+": "+getNombre();
 	}
 }

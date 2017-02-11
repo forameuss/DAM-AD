@@ -1,42 +1,43 @@
 package modelos;
 
 import java.sql.Date;
-
 import javax.persistence.*;
+
 @Entity
 @Table(name="dbo.BI_Actualizaciones")
 public class Actualizacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name="Fecha")
+    @Column(name = "Fecha")
     private Date fecha;
-    @Column(name="Temperatura")
+    @Column(name = "Temperatura")
     private Byte temperatura;
-    @Column(name="Peso")
+    @Column(name = "Peso")
     private Integer peso;
-    @Column(name="CodigoMascota")
+    @Column(name = "CodigoMascota")
     private String codigoMascota;
-    @Column(name="Raza")
+    @Column(name = "Raza")
     private String raza;
-    @Column(name="Especie")
+    @Column(name = "Especie")
     private String especie;
-    @Column(name="FechaNacimiento")
+    @Column(name = "FechaNacimiento")
     private Date fechaNacimiento;
-    @Column(name="FechaFallecimiento")
+    @Column(name = "FechaFallecimiento")
     private Date fechaFallecimiento;
-    @Column(name="Alias")
+    @Column(name = "Alias")
     private String alias;
-    @Column(name="CodigoPropietario")
+    @Column(name = "CodigoPropietario")
     private Integer codigoPropietario;
-    @Column(name="Enfermedad")
+    @Column(name = "Enfermedad")
     private String enfermedad;
 
-    public Actualizacion(){}
+    public Actualizacion() {
+    }
 
     public Actualizacion(Integer id, Date fecha, Byte temperatura, Integer peso, String codigoMascota, String raza,
-                         String especie, Date fechaNacimiento, Date fechaFallecimiento, String alias, Integer codigoPropietario,
-                         String enfermedad) {
+                         String especie, Date fechaNacimiento, Date fechaFallecimiento, String alias,
+                         Integer codigoPropietario, String enfermedad) {
         super();
         this.id = id;
         this.fecha = fecha;
@@ -147,14 +148,4 @@ public class Actualizacion {
     public void setEnfermedad(String enfermedad) {
         this.enfermedad = enfermedad;
     }
-
-    @Override
-    public String toString() {
-        return "Actualizacion [id=" + id + ", fecha=" + fecha + ", temperatura=" + temperatura + ", peso=" + peso
-                + ", codigoMascota=" + codigoMascota + ", raza=" + raza + ", especie=" + especie + ", fechaNacimiento="
-                + fechaNacimiento + ", fechaFallecimiento=" + fechaFallecimiento + ", alias=" + alias
-                + ", codigoPropietario=" + codigoPropietario + ", enfermedad=" + enfermedad + "]";
-    }
-
-
 }

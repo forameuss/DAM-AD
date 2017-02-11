@@ -10,19 +10,19 @@ public class Visita {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idVisita;
-	
 	@Column(name="Fecha")
 	private Date fecha;
-	
 	@Column(name="Temperatura")
 	private byte temperatura;
-	
 	@Column(name="Peso")
 	private int peso;
-	
 	@ManyToOne
 	@JoinColumn(name="Mascota")
 	private Mascota mascota;
+
+	public Visita(){
+
+	}
 
 	public Visita(int idVisita, Date fecha, byte temperatura, int peso, Mascota mascota) {
 		super();
@@ -72,5 +72,9 @@ public class Visita {
 	public void setMascota(Mascota mascota) {
 		this.mascota = mascota;
 	}
-	
+
+	@Override
+	public String toString(){
+		return getMascota().getAlias()+", "+getFecha().toString();
+	}
 }

@@ -10,39 +10,31 @@ import javax.persistence.*;
 @Table(name="dbo.BI_Mascotas")
 public class Mascota {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String codigo;
-	
 	@Column(name="Raza")
 	private String raza;
-	
 	@Column(name="Especie")
 	private String especie;
-	
 	@Column(name="FechaNacimiento")
 	private Date fechaNacimiento;
-	
 	@Column(name="FechaFallecimiento")
 	private Date fechaFallecimiento;
-	
 	@Column(name="Alias")
 	private String alias;
-	
 	@OneToMany(mappedBy="idVisita",cascade= CascadeType.ALL)
 	private Set<Visita> visitas=new HashSet();
-	
+
 	@ManyToOne
 	@JoinColumn(name="CodigoPropietario")
 	private Cliente cliente;
-	
 
 	@OneToMany(mappedBy="mascota",cascade= CascadeType.ALL)
-	private Set<EnfermedadMascota> enfermedadesMascotas;
+	private Set<MascotaEnfermedad> mascotasEnfermedades;
 
 	public Mascota(){}
 
 	public Mascota(String codigo, String raza, String especie, Date fechaNacimiento, Date fechaFallecimiento,
-			String alias, Set<Visita> visitas, Cliente cliente) {
+				   String alias, Set<Visita> visitas, Cliente cliente) {
 		super();
 		this.codigo = codigo;
 		this.raza = raza;
@@ -118,12 +110,16 @@ public class Mascota {
 		this.cliente = cliente;
 	}
 
-	public Set<EnfermedadMascota> getEnfermedadesMascotas() {
-		return enfermedadesMascotas;
+	public Set<MascotaEnfermedad> getMascotasEnfermedades() {
+		return mascotasEnfermedades;
 	}
 
-	public void setEnfermedadesMascotas(Set<EnfermedadMascota> enfermedadesMascotas) {
-		this.enfermedadesMascotas = enfermedadesMascotas;
+	public void setMascotasEnfermedades(Set<MascotaEnfermedad> mascotasEnfermedades) {
+		this.mascotasEnfermedades = mascotasEnfermedades;
 	}
-	
+
+	@Override
+	public String toString() {
+		return getCodigo()+": "+getAlias();
+	}
 }

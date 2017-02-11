@@ -1,7 +1,6 @@
 package modelos;
 
 import java.util.Set;
-
 import javax.persistence.*;
 
 @Entity
@@ -10,12 +9,10 @@ public class Enfermedad {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
 	@Column(name="Nombre")
 	private String nombre;
-	
 	@OneToMany(mappedBy="enfermedad",cascade= CascadeType.ALL)
-	private Set<EnfermedadMascota> enfermedadesMascotas;
+	private Set<MascotaEnfermedad> mascotaEnfermedades;
 	
 	public Enfermedad(){}
 
@@ -41,13 +38,17 @@ public class Enfermedad {
 		this.nombre = nombre;
 	}
 
-	public Set<EnfermedadMascota> getEnfermedadesMascotas() {
-		return enfermedadesMascotas;
+	public Set<MascotaEnfermedad> getMascotaEnfermedades() {
+		return mascotaEnfermedades;
 	}
 
-	public void setEnfermedadesMascotas(Set<EnfermedadMascota> enfermedadesMascotas) {
-		this.enfermedadesMascotas = enfermedadesMascotas;
+	public void setMascotaEnfermedades(Set<MascotaEnfermedad> mascotaEnfermedades) {
+		this.mascotaEnfermedades = mascotaEnfermedades;
 	}
-	
+
+	@Override
+	public String toString(){
+		return getNombre();
+	}
 	
 }

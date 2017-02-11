@@ -1,12 +1,11 @@
-package Modelos;
+package modelos;
 
 import java.io.Serializable;
 import java.sql.Date;
 import javax.persistence.*;
-
 @Entity
 @Table(name="dbo.BI_Mascotas_Enfermedades")
-public class EnfermedadMascota implements Serializable {
+public class MascotaEnfermedad implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -14,31 +13,41 @@ public class EnfermedadMascota implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="idEnfermedad")
 	private Enfermedad enfermedad;
-	
+
 	@Id
 	@ManyToOne
 	@JoinColumn(name="Mascota")
 	private Mascota mascota;
-	
 	@Column(name="FechaInicio")
 	private Date fechaInicio;
-	
 	@Column(name="FechaCura")
 	private Date fechaCura;
-	
-	public EnfermedadMascota(){}
 
-	
+	public MascotaEnfermedad(){}
 
-	public EnfermedadMascota(Enfermedad enfermedad, Mascota mascota, Date fechaInicio, Date fechaCura) {
+	public MascotaEnfermedad(Mascota mascota, Enfermedad enfermedad, Date fechaInicio, Date fechaCura) {
 		super();
-		this.enfermedad = enfermedad;
 		this.mascota = mascota;
+		this.enfermedad = enfermedad;
 		this.fechaInicio = fechaInicio;
 		this.fechaCura = fechaCura;
 	}
 
+	public Enfermedad getEnfermedad() {
+		return enfermedad;
+	}
 
+	public void setEnfermedad(Enfermedad enfermedad) {
+		this.enfermedad = enfermedad;
+	}
+
+	public Mascota getMascota() {
+		return mascota;
+	}
+
+	public void setMascota(Mascota mascota) {
+		this.mascota = mascota;
+	}
 
 	public Date getFechaInicio() {
 		return fechaInicio;
@@ -55,5 +64,11 @@ public class EnfermedadMascota implements Serializable {
 	public void setFechaCura(Date fechaCura) {
 		this.fechaCura = fechaCura;
 	}
-	
+
+	@Override
+	public String toString(){
+		return getMascota().getAlias()+", "+getEnfermedad().getNombre();
+	}
+
+
 }
