@@ -14,15 +14,16 @@ public class PruebasJAXB {
         ma.abrirListaAtomosJAXB(origen);
         // Comprobamos que se ha cargado
         ma.recorreListaAtomos();
-        // Ahora vamos a añadir otro book
+        // Ahora vamos a aï¿½adir otro book
         TipoBook nuevoBook = new TipoBook();
         TipoTitle nuevoTitulo = new TipoTitle();
-        nuevoTitulo.setValue("España con dos cojones");
-        nuevoTitulo.setLang("es");
+        nuevoTitulo.setValue("1984");
+        nuevoTitulo.setLang("en");
         nuevoBook.setTitle(nuevoTitulo);
-        nuevoBook.setCategory("Educativo");
+        nuevoBook.setCategory("Political fiction");
         nuevoBook.setPrice(9.99f);
-        nuevoBook.getAuthor().add("Álvaro Ojeda");
+        nuevoBook.getAuthor().add("George Orwell");
+        nuevoBook.setYear((short)1949);
         ma.anadirBook(nuevoBook);
         // Y generamos un nuevo XML mediante marshaling
         ma.guardarListaBooks(destino);

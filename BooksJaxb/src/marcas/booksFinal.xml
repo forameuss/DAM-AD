@@ -34,10 +34,10 @@
         <year>2016</year>
         <price>39.95</price>
     </book>
-    <book category="Educativo">
-        <title lang="es">España con dos cojones</title>
-        <author>Álvaro Ojeda</author>
-        <year>0</year>
+    <book category="Political fiction">
+        <title lang="en">1984</title>
+        <author>George Orwell</author>
+        <year>1949</year>
         <price>9.99</price>
     </book>
 </bookstore>
